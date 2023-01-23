@@ -1,8 +1,9 @@
-def test(x):
+def test(arr):
     """
     .git/
     """
-    print(x)
+    print(arr)
 
-def failTest():
+
+def fail_test():
     return None
