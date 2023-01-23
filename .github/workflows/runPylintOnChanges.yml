@@ -1,0 +1,28 @@
+name: Pylint_on_change
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  pylint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        ref: ${{github.head_ref}}
+    - name: Get list of modified files
+      run: git diff --name-only $(git merge-base ${{github.base_ref}} ${{github.head_ref}})
+    - name: Run Pylint on modified files
+      run: |
+        for file in $(git diff --name-only $(git merge-base ${{github.base_ref}} ${{github.head_ref}})); do
+          if [ ${file: -3} == ".py" ]; then
+            echo "Running Pylint on $file"
+            pylint $file
+          else
+            echo "$file is not a python file, skipping Pylint"
+          fi
+        done
