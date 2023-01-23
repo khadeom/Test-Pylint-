@@ -1,0 +1,2 @@
+scan all python files in all top level directories from this directory)
+pylint **/*.py 
