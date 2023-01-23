@@ -23,3 +23,13 @@ def test(arr):
         print(i)
 
     return 0
+
+def test2(arr):
+    """
+    function to test pylint
+    """
+    for i in range(len(arr)):
+        print(i)
+
+    return 0
+

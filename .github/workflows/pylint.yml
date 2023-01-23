@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build:
@@ -23,13 +26,13 @@ jobs:
         pip install -r requirements.txt
 
     - name: Get list of modified files
-      run: git diff --name-only main
+      run: git diff --name-only $(git rev-parse --abbrev-ref HEAD)
 
     - name: Run Pylint on modified files
       run: |
-        for file in $(git diff --name-only main); do
+        for file in $(git diff --name-only $(git rev-parse --abbrev-ref HEAD)); do
           pylint $file
         done
-    # - name: Analysing the code with pylint
-    #   run: |
-    #     pylint $(git ls-files '*.py')
+    
+
+    
