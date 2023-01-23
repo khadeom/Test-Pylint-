@@ -1,0 +1,23 @@
+name: Pylint
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  pylint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Get list of modified files
+      run: git diff --name-only $(git rev-parse --abbrev-ref HEAD)
+
+    - name: Run Pylint on modified files
+      run: |
+        for file in $(git diff --name-only $(git rev-parse --abbrev-ref HEAD)); do
+          pylint $file
+        done
