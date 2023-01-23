@@ -31,6 +31,7 @@ jobs:
     - name: Run Pylint on modified files
       run: |
         for file in $(git diff --name-only $(git rev-parse --abbrev-ref HEAD)); do
+          echo $file
           pylint $file
         done
     

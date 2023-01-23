@@ -4,5 +4,5 @@ def test(x):
     """
     print(x)
 
-def failTest():
+def fail_test():
     return None
