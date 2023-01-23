@@ -24,7 +24,7 @@ jobs:
 
     - name: Run Pylint on modified files
       run: |
-        for file in $(git diff --name-only HEAD^); do
+        for file in $(git diff --name-only HEAD~); do
           pylint $file
         done
     # - name: Analysing the code with pylint
