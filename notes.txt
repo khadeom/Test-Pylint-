@@ -1,2 +1,6 @@
 scan all python files in all top level directories from this directory)
 pylint **/*.py 
+
+
+#github actions Tutorial
+https://canovasjm.netlify.app/2020/11/29/github-actions-run-a-python-script-on-schedule-and-commit-changes/
