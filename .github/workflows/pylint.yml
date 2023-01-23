@@ -20,7 +20,7 @@ jobs:
         pip install -r requirements.txt
 
     - name: Get list of modified files
-      run: git diff --name-only HEAD^
+      run: git diff --name-only HEAD~
 
     - name: Run Pylint on modified files
       run: |
